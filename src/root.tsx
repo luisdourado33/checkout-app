@@ -1,10 +1,11 @@
 import React from 'react';
+import { ThemeProvider } from 'providers/theme';
 
 const Root = (): JSX.Element => {
 	return (
-		<div>
-			<h1>Root</h1>
-		</div>
+		<ThemeProvider>
+			<h1>Hello World!</h1>
+		</ThemeProvider>
 	);
 };
 
