@@ -5,7 +5,6 @@ export const theme: DefaultTheme = {
     primary: "",
     secondary: "",
   },
-  fonts: ["DM Sans", "sans-serif"],
   fontSizes: {
     xs: "0.8rem",
     sm: "1.0rem",
