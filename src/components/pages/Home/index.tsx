@@ -26,7 +26,7 @@ export const Home: React.FC<any> = () => {
         <Box mx="10px" d="flex" flexDirection="column" w="fit-content" h="100%">
           <Text
             fontSize="20px"
-            fontWeight="bold"
+            fontWeight="400px"
             style={{ marginBottom: "9px" }}
           >
             Estamos quase lá!
@@ -45,7 +45,12 @@ export const Home: React.FC<any> = () => {
           >
             {renderCardFlags}
           </Box>
-          <Box d="flex" align="center" justifyContent="center">
+          <Box
+            d="flex"
+            align="center"
+            justifyContent="center"
+            style={{ marginBottom: 8 }}
+          >
             <Text
               textAlign="center"
               fontSize="10px"

@@ -7,9 +7,14 @@ import { InputComponent, Label } from "./styles";
 
 export const Input = (props: InputProps): JSX.Element => {
   return (
-    <Wrapper d="flex" w="100%" flexDirection="column">
+    <Wrapper d="flex" flexDirection="column" style={props.style ?? {}}>
       <Label htmlFor={props.id}>{props.label}</Label>
-      <InputComponent id={props.id} placeholder="0000 0000 0000 0000" />
+      <InputComponent
+        id={props.id}
+        placeholder={props.placeholder}
+        type={props.type}
+        value={props.value}
+      />
     </Wrapper>
   );
 };

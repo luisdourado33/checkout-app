@@ -3,10 +3,9 @@ import { BaseInput } from "./base-input";
 
 export const Label = styled.label`
   font-size: 12px;
-  color: ${(props) => props.theme.colors.light};
+  color: ${({ theme }) => theme.colors.common.heavyGray};
 `;
 export const InputComponent = styled(BaseInput)`
-  width: 100%;
   padding: 10px 0;
   border-top: none;
   border-right: none;
@@ -16,7 +15,13 @@ export const InputComponent = styled(BaseInput)`
   line-height: 20.83px;
   color: #191847;
   border-color: ${({ theme }) => theme.colors.common.lightGray};
+  transition: ${({ theme }) => theme.transition.default}
+
   ::placeholder {
-    color: ${(props) => props.theme.colors.common.secondary};
+    color: ${(props) => props.theme.colors.main.secondary};
+  }
+
+  :focus {
+    border-color: ${({ theme }) => theme.colors.main.primary}
   }
 `;
