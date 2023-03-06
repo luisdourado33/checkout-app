@@ -8,7 +8,7 @@ import type { CardFlagProps } from "utils";
 import { AppHeader } from "components/molecules";
 import { PaymentForm } from "components/organisms";
 
-import { Container, Box, Text, CardFlag } from "components/atoms";
+import { Container, Box, Text, CardFlag, Badge } from "components/atoms";
 
 import iuguIcon from "assets/icons/iugu.svg";
 
@@ -24,7 +24,7 @@ export const Home: React.FC<any> = () => {
     <Container fluid h="100%">
       <AppHeader />
       <Container fluid d="flex" h="80%" justifyContent="center">
-        <Box mx="10px" d="flex" flexDirection="column" w="fit-content" h="100%">
+        <Box mx="10px" d="flex" w="fit-content" h="100%" flexDirection="column">
           <Text
             fontSize="20px"
             fontWeight="400px"
@@ -64,8 +64,15 @@ export const Home: React.FC<any> = () => {
           </Box>
           <PaymentForm />
         </Box>
-        <Box mx={"10px"}>
-          <h1>Second box</h1>
+        <Box>
+          <Text
+            fontSize="20px"
+            fontWeight="400px"
+            style={{ marginBottom: "8px" }}
+          >
+            Confira seu plano
+          </Text>
+          <Badge>fulano@cicrano.com.br</Badge>
         </Box>
       </Container>
     </Container>

@@ -8,3 +8,4 @@ export * from "./Text";
 export * from "./CardFlag";
 export * from "./Wrapper";
 export * from "./Button";
+export * from "./Badge";
