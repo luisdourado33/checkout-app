@@ -1,18 +1,8 @@
 import React from "react";
 
-import type { CSSProperties } from "styled-components";
-import styled from "styled-components";
-
-export interface ContainerProps {
-  fluid?: boolean;
-  children: React.ReactNode;
-  style?: CSSProperties;
-}
-
-const CustomContainer = styled.div<ContainerProps>`
-  width: ${({ fluid, theme }) => (fluid ?? false ? "100%" : "80%")};
-`;
+import { BaseContainer } from "./base-container";
+import type { ContainerProps } from "./container.types";
 
 export const Container: React.FC<ContainerProps> = (props) => {
-  return <CustomContainer {...props}>{props.children}</CustomContainer>;
+  return <BaseContainer {...props}>{props.children}</BaseContainer>;
 };

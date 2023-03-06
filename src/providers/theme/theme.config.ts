@@ -2,8 +2,15 @@ import type { DefaultTheme } from "styled-components";
 
 export const theme: DefaultTheme = {
   colors: {
-    primary: "",
-    secondary: "",
+    main: {
+      primary: "#191847",
+      secondary: "#F5850B",
+    },
+    common: {
+      lightGray: "#F4F3F6",
+      mediumGray: "#B0B0B0",
+      heavyGray: "#727272",
+    },
   },
   fontSizes: {
     xs: "0.8rem",
@@ -19,7 +26,7 @@ export const theme: DefaultTheme = {
   },
   spacing: {
     inline: "4.25rem",
-    block: "15px",
+    block: "1.475rem",
   },
   breakpoints: {
     laptop: "1024px",
@@ -27,5 +34,8 @@ export const theme: DefaultTheme = {
     mobileL: "425px",
     mobileM: "375px",
     mobileS: "320px",
+  },
+  transition: {
+    default: "all 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53)",
   },
 };
