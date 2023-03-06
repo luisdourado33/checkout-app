@@ -7,6 +7,7 @@ import type { CardFlagProps } from "utils";
 
 import { AppHeader } from "components/molecules";
 import { PaymentForm } from "components/organisms";
+
 import { Container, Box, Text, CardFlag } from "components/atoms";
 
 import iuguIcon from "assets/icons/iugu.svg";
@@ -63,9 +64,9 @@ export const Home: React.FC<any> = () => {
           </Box>
           <PaymentForm />
         </Box>
-        {/* <Box mx={"10px"}>
+        <Box mx={"10px"}>
           <h1>Second box</h1>
-        </Box> */}
+        </Box>
       </Container>
     </Container>
   );
