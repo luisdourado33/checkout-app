@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ThemeProvider } from "providers/theme";
+import { ThemeProvider, GlobalStyle } from "providers/theme";
 import { RouterProvider } from "react-router-dom";
 
 import { publicRouter } from "navigation/public";
@@ -8,6 +8,7 @@ import { publicRouter } from "navigation/public";
 const Root = (): JSX.Element => {
   return (
     <ThemeProvider>
+      <GlobalStyle />
       <RouterProvider router={publicRouter} />
     </ThemeProvider>
   );

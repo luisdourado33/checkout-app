@@ -6,7 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 
-const Home = (): any => <div>Home component</div>;
+import Home from "components/pages/Home";
 
 export const mappedRoutes = createRoutesFromElements(
   <>
