@@ -6,15 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 
-import { Container } from "components/atoms";
-
-const Home = (): any => {
-  return (
-    <Container>
-      <h1>Hello World!</h1>
-    </Container>
-  );
-};
+import Home from "components/pages/Home";
 
 export const mappedRoutes = createRoutesFromElements(
   <>

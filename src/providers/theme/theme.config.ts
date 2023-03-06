@@ -18,7 +18,7 @@ export const theme: DefaultTheme = {
     bold: 500,
   },
   spacing: {
-    inline: "100px",
+    inline: "4.25rem",
     block: "15px",
   },
   breakpoints: {

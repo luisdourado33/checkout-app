@@ -10,8 +10,7 @@ export interface ContainerProps {
 }
 
 const CustomContainer = styled.div<ContainerProps>`
-  padding-inline: ${({ fluid, theme }) =>
-    fluid ?? false ? "0px" : theme.spacing.inline};
+  width: ${({ fluid, theme }) => (fluid ?? false ? "100%" : "80%")};
 `;
 
 export const Container: React.FC<ContainerProps> = (props) => {
