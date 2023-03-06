@@ -1,5 +1,7 @@
 import type { CSSProperties } from "react";
 
+import type { IFontSize, IFontWeight } from "providers/theme";
+
 export interface BaseComponentProps {
   id?: string;
   d?: "flex" | "block" | "static";
@@ -24,4 +26,10 @@ export interface BaseComponentProps {
   mx?: string;
   my?: string;
   style?: CSSProperties;
+}
+
+export interface BaseTextProps {
+  fontWeight?: IFontWeight | string;
+  fontSize?: IFontSize | string;
+  color?: string;
 }
