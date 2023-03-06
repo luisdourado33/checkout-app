@@ -1,26 +1,26 @@
 import type { DefaultTheme } from "styled-components";
 
-export enum IFontSize {
-  xs = "0.8rem",
-  sm = "1.0rem",
-  md = "1.5rem",
-  lg = "3rem",
-  xl = "4.5rem",
-}
+export const IFontSize = {
+  xs: "0.8rem",
+  sm: "1.0rem",
+  md: "1.5rem",
+  lg: "3rem",
+  xl: "4.5rem",
+};
 
-export enum IFontWeight {
-  light = 100,
-  normal = 300,
-  bold = 500,
-}
+export const IFontWeight = {
+  light: 100,
+  normal: 300,
+  bold: 500,
+};
 
-export enum IBreakpoints {
-  laptop = "1024px",
-  tablet = "768px",
-  mobileL = "425px",
-  mobileM = "375px",
-  mobileS = "320px",
-}
+export const IBreakpoints = {
+  laptop: "1024px",
+  tablet: "768px",
+  mobileL: "425px",
+  mobileM: "375px",
+  mobileS: "320px",
+};
 
 export const theme: DefaultTheme = {
   colors: {

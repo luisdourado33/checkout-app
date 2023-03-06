@@ -10,6 +10,12 @@ export const BaseText = styled.p<TextProps>`
     `}
 
   ${(props) =>
+    props.textAlign &&
+    css`
+      text-align: ${props.textAlign};
+    `}
+
+  ${(props) =>
     props.fontSize &&
     css`
       font-size: ${props.fontSize};

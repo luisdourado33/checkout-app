@@ -1,7 +1,7 @@
-import type { BaseTextProps } from "components/@types";
+import type { BaseComponentProps, BaseTextProps } from "components/@types";
 
 interface TextBaseProps {
   children?: React.ReactNode;
 }
 
-export type TextProps = BaseTextProps & TextBaseProps;
+export type TextProps = BaseTextProps & TextBaseProps & BaseComponentProps;

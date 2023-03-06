@@ -18,7 +18,8 @@ export interface BaseComponentProps {
     | "flex-end"
     | "center"
     | "space-between"
-    | "space-around";
+    | "space-around"
+    | "space-evenly";
   w?: string;
   h?: string;
   px?: string;
@@ -29,7 +30,8 @@ export interface BaseComponentProps {
 }
 
 export interface BaseTextProps {
-  fontWeight?: IFontWeight | string;
-  fontSize?: IFontSize | string;
+  fontWeight?: typeof IFontWeight | string;
+  fontSize?: typeof IFontSize | string;
   color?: string;
+  textAlign?: string;
 }

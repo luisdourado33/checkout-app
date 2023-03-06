@@ -20,11 +20,18 @@ export const BaseBox = styled.div<BoxProps>`
     css`
       justify-items: ${props.justifyItems};
     `}
+  
 
   ${(props) =>
     props.justifyContent &&
     css`
       justify-content: ${props.justifyContent};
+    `}
+
+    ${(props) =>
+    props.flexDirection &&
+    css`
+      flex-direction: ${props.flexDirection};
     `}
 
   ${(props) =>
