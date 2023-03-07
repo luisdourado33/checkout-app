@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -7,8 +6,8 @@ import {
   useLocation,
 } from "react-router-dom";
 
-import { Home, Success } from "components/pages";
 import { AppHeader } from "components/molecules";
+import { Home, Success } from "components/pages";
 
 const AppWrapper: React.FC<any> = ({ children }) => {
   const location = useLocation();

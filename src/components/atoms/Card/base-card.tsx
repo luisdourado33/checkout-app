@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import styled, { css } from "styled-components";
+
 import type { CardProps } from "./card.types";
 
 export const BaseCard = styled.div<CardProps>`

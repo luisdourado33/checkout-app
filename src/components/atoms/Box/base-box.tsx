@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import styled, { css } from "styled-components";
+
 import type { BoxProps } from "./box.types";
 
 export const BaseBox = styled.div<BoxProps>`

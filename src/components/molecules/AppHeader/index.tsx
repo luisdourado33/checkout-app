@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import type { Location } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { arrowLeft } from "assets/icons";
 import { useTheme } from "styled-components";
 
 import { Brand, Button, Icon } from "components/atoms";
-import { Header } from "./styles";
 
-import { arrowLeft } from "assets/icons";
-import { useNavigate } from "react-router-dom";
+import { Header } from "./styles";
 
 interface HeaderProps {
   currentLocation: Location;

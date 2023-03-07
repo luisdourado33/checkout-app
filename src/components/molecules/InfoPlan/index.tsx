@@ -1,9 +1,9 @@
 import React from "react";
-
 import { useTheme } from "styled-components";
 
-import { InfoPlanCard } from "./styles";
 import { Badge, Box, Text } from "components/atoms";
+
+import { InfoPlanCard } from "./styles";
 
 export const InfoPlan = (): any => {
   const theme = useTheme();

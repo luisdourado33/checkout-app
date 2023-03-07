@@ -1,16 +1,13 @@
 import React, { useMemo } from "react";
-
+import iuguIcon from "assets/icons/iugu.svg";
 import { useTheme } from "styled-components";
-
-import { cardFlags } from "utils";
 import type { CardFlagProps } from "utils";
+import { cardFlags } from "utils";
 
+import { Badge, Box, CardFlag, Container, Text } from "components/atoms";
 import { PaymentForm, PlanList } from "components/organisms";
-import { Container, Box, Text, CardFlag, Badge } from "components/atoms";
 
 import { ContainerForm, Content } from "./styles";
-
-import iuguIcon from "assets/icons/iugu.svg";
 
 export const Home: React.FC<any> = () => {
   const themeConfig = useTheme();

@@ -1,8 +1,8 @@
 import React from "react";
+import { circleStar } from "assets/icons";
 import { useTheme } from "styled-components";
 
-import { Box, Icon, Wrapper, Text } from "components/atoms";
-import { circleStar } from "assets/icons";
+import { Box, Icon, Text, Wrapper } from "components/atoms";
 
 export const BadgePlan: React.FC<any> = () => {
   const theme = useTheme();
