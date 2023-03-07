@@ -1,8 +1,14 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import styled, { css } from "styled-components";
-import type { ContainerProps } from "./container.types";
+import type { CardProps } from "./card.types";
 
-export const BaseContainer = styled.div<ContainerProps>`
+export const BaseCard = styled.div<CardProps>`
+  border-radius: 15px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  background-color: #ffff;
+  min-width: 343px;
+  padding: 16px;
+
   ${(props) =>
     props.d &&
     css`
@@ -15,63 +21,57 @@ export const BaseContainer = styled.div<ContainerProps>`
       align-items: ${props.align};
     `}
 
-  ${(props) =>
+${(props) =>
     props.justifyItems &&
     css`
       justify-items: ${props.justifyItems};
     `}
 
-  ${(props) =>
+${(props) =>
     props.justifyContent &&
     css`
       justify-content: ${props.justifyContent};
     `}
 
-      ${(props) =>
+    ${(props) =>
     props.flexDirection &&
     css`
       flex-direction: ${props.flexDirection};
     `}
 
-  ${(props) =>
+${(props) =>
     props.w &&
     css`
       width: ${props.w};
     `}
 
-  ${(props) =>
+${(props) =>
     props.h &&
     css`
       height: ${props.h};
     `}
 
-  ${(props) =>
+${(props) =>
     props.px &&
     css`
       padding-inline: ${props.px};
     `}
 
-  ${(props) =>
+${(props) =>
     props.py &&
     css`
       padding-block: ${props.py};
     `}
 
-  ${(props) =>
+${(props) =>
     props.mx &&
     css`
       margin-inline: ${props.mx};
     `}
 
-  ${(props) =>
+${(props) =>
     props.my &&
     css`
       margin-block: ${props.my};
-    `}
-
-  ${(props) =>
-    props.fluid &&
-    css`
-      width: 100%;
     `}
 `;

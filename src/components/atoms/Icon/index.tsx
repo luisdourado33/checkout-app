@@ -1,13 +1,20 @@
 import React from "react";
+import styled from "styled-components";
 
-interface IProps {
-  iconName: string;
-  wrapperStyle?: string;
-  svgProp?: React.SVGProps<SVGSVGElement>;
+const IconComponent = styled.img``;
+
+interface IconProps {
+  icon: any;
+  width?: string;
+  height?: string;
 }
-
-function Icon(props: IProps): JSX.Element {
-  return <></>;
-}
-
-export { Icon };
+export const Icon: React.FC<IconProps> = ({
+  icon,
+  width,
+  height,
+  ...otherProps
+}) => {
+  return (
+    <IconComponent src={icon} width={width} height={height} {...otherProps} />
+  );
+};
