@@ -7,7 +7,7 @@ export const Form = styled.form``;
 
 export const PaymentForm: React.FC<any> = () => {
   return (
-    <Box>
+    <Box w="100%">
       <Form>
         <Input
           id="card-number"
@@ -17,11 +17,7 @@ export const PaymentForm: React.FC<any> = () => {
           type="text"
           style={{ marginBottom: "30px" }}
         />
-        <Wrapper
-          d="flex"
-          justifyContent="space-between"
-          style={{ marginBottom: "30px" }}
-        >
+        <Wrapper d="flex" w="100%" style={{ marginBottom: "30px" }}>
           <Input
             id="expiration-date"
             label="Data de Validade"
@@ -37,7 +33,7 @@ export const PaymentForm: React.FC<any> = () => {
             label="CVV"
             placeholder="000"
             type="number"
-            w="fit-content"
+            w="100%"
           />
         </Wrapper>
         <Input

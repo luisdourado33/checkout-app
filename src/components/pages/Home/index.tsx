@@ -6,9 +6,10 @@ import { cardFlags } from "utils";
 import type { CardFlagProps } from "utils";
 
 import { AppHeader } from "components/molecules";
-import { PaymentForm } from "components/organisms";
+import { PaymentForm, PlanList } from "components/organisms";
 
 import { Container, Box, Text, CardFlag, Badge } from "components/atoms";
+import { ContainerForm, Content } from "./styles";
 
 import iuguIcon from "assets/icons/iugu.svg";
 
@@ -23,8 +24,14 @@ export const Home: React.FC<any> = () => {
   return (
     <Container fluid h="100%">
       <AppHeader />
-      <Container fluid d="flex" h="80%" justifyContent="center">
-        <Box mx="10px" d="flex" w="fit-content" h="100%" flexDirection="column">
+      <Content
+        fluid
+        d="flex"
+        flexDirection="row"
+        justifyContent="space-evenly"
+        py="50px"
+      >
+        <ContainerForm mx="10px" d="flex" h="100%" flexDirection="column">
           <Text
             fontSize="20px"
             fontWeight="400px"
@@ -39,9 +46,10 @@ export const Home: React.FC<any> = () => {
           <Box
             d="flex"
             align="center"
-            justifyContent="space-evenly"
+            justifyContent="center"
             style={{
               marginBottom: "10px",
+              gap: "10px",
             }}
           >
             {renderCardFlags}
@@ -63,7 +71,7 @@ export const Home: React.FC<any> = () => {
             <img src={iuguIcon} width={"29px"} height={"11px"} />
           </Box>
           <PaymentForm />
-        </Box>
+        </ContainerForm>
         <Box>
           <Text
             fontSize="20px"
@@ -72,9 +80,12 @@ export const Home: React.FC<any> = () => {
           >
             Confira seu plano
           </Text>
-          <Badge>fulano@cicrano.com.br</Badge>
+          <Badge w="fit-content" my="10px">
+            fulano@cicrano.com.br
+          </Badge>
+          <PlanList />
         </Box>
-      </Container>
+      </Content>
     </Container>
   );
 };
