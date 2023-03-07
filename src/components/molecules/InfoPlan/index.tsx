@@ -9,7 +9,7 @@ export const InfoPlan = (): any => {
   const theme = useTheme();
   return (
     <InfoPlanCard
-      w="100%"
+      w="auto"
       h="100px"
       d="flex"
       flexDirection="column"

@@ -17,7 +17,13 @@ export const PaymentForm: React.FC<any> = () => {
           type="text"
           style={{ marginBottom: "30px" }}
         />
-        <Wrapper d="flex" w="100%" style={{ marginBottom: "30px" }}>
+        <Wrapper
+          d="flex"
+          w="100%"
+          style={{
+            marginBottom: 30,
+          }}
+        >
           <Input
             id="expiration-date"
             label="Data de Validade"
@@ -25,6 +31,7 @@ export const PaymentForm: React.FC<any> = () => {
             type="text"
             style={{
               marginRight: "30px",
+              width: "100%",
             }}
           />
 
@@ -33,7 +40,9 @@ export const PaymentForm: React.FC<any> = () => {
             label="CVV"
             placeholder="000"
             type="number"
-            w="100%"
+            style={{
+              width: "100%",
+            }}
           />
         </Wrapper>
         <Input
