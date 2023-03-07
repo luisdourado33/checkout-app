@@ -5,7 +5,6 @@ import { useTheme } from "styled-components";
 import { cardFlags } from "utils";
 import type { CardFlagProps } from "utils";
 
-import { AppHeader } from "components/molecules";
 import { PaymentForm, PlanList } from "components/organisms";
 import { Container, Box, Text, CardFlag, Badge } from "components/atoms";
 
@@ -24,7 +23,6 @@ export const Home: React.FC<any> = () => {
 
   return (
     <Container fluid d="flex" flexDirection="column">
-      <AppHeader hasBackButton={false} />
       <Content
         fluid
         d="flex"

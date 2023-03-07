@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme } from "styled-components";
 
-import { AppHeader, BadgePlan } from "components/molecules";
+import { BadgePlan } from "components/molecules";
 import { Box, Button, Card, Container, Icon, Text } from "components/atoms";
 
 import { Content } from "./styles";
@@ -12,7 +12,6 @@ export const Success: React.FC<any> = () => {
   const theme = useTheme();
   return (
     <Container fluid d="flex" flexDirection="column" h="100%">
-      <AppHeader hasBackButton={true} />
       <Content fluid d="flex" flexDirection="column" align="center">
         <Icon
           icon={circleCheck}
