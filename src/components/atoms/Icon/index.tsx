@@ -7,6 +7,7 @@ interface IconProps {
   icon: any;
   width?: string;
   height?: string;
+  style?: any;
 }
 export const Icon: React.FC<IconProps> = ({
   icon,
