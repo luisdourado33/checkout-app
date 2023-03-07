@@ -1,5 +1,4 @@
 import type { CSSProperties } from "react";
-
 import type { IFontSize, IFontWeight } from "providers/theme";
 
 export interface BaseComponentProps {

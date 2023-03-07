@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import styled, { css } from "styled-components";
+
 import type { ContainerProps } from "./container.types";
 
 export const BaseContainer = styled.div<ContainerProps>`

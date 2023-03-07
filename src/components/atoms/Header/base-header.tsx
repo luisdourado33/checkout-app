@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import styled, { css } from "styled-components";
+
 import type { HeaderProps } from "./header.types";
 
 export const BaseHeader = styled.header<HeaderProps>`

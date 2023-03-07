@@ -1,20 +1,40 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import type { Location } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { arrowLeft } from "assets/icons";
 import { useTheme } from "styled-components";
 
-import { Brand, Icon } from "components/atoms";
+import { Brand, Button, Icon } from "components/atoms";
+
 import { Header } from "./styles";
 
-import { arrowLeft } from "assets/icons";
-
-interface Props {
-  hasBackButton?: boolean;
+interface HeaderProps {
+  currentLocation: Location;
 }
-export const AppHeader: React.FC<Props> = ({ hasBackButton }): JSX.Element => {
+
+export const AppHeader: React.FC<HeaderProps> = ({
+  currentLocation,
+}): JSX.Element => {
   const theme = useTheme();
-  const renderBackButton = (hasBackButton ?? false) && (
-    <Icon icon={arrowLeft} />
+  const navigate = useNavigate();
+
+  const [showBackButton, setShowBackButton] = useState<boolean>(false);
+
+  const handleGoBack = (): void => {
+    navigate(-1);
+  };
+
+  const renderBackButton = showBackButton && (
+    <Button variant="text" onClick={handleGoBack}>
+      <Icon icon={arrowLeft} />
+    </Button>
   );
+
+  useEffect(() => {
+    if (currentLocation?.pathname === "/success") {
+      setShowBackButton(true);
+    }
+  });
 
   return (
     <Header

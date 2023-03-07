@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Box, Input, Wrapper, Button } from "components/atoms";
+import { Box, Button, Input, Wrapper } from "components/atoms";
 
 export const Form = styled.form``;
 

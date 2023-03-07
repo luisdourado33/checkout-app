@@ -1,17 +1,43 @@
 import React from "react";
-
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
+  useLocation,
 } from "react-router-dom";
 
+import { AppHeader } from "components/molecules";
 import { Home, Success } from "components/pages";
+
+const AppWrapper: React.FC<any> = ({ children }) => {
+  const location = useLocation();
+
+  return (
+    <>
+      <AppHeader currentLocation={location} />
+      {children}
+    </>
+  );
+};
 
 export const mappedRoutes = createRoutesFromElements(
   <>
-    <Route path="/" element={<Home />} />
-    <Route path="/success" element={<Success />} />
+    <Route
+      path="/"
+      element={
+        <AppWrapper>
+          <Home />
+        </AppWrapper>
+      }
+    />
+    <Route
+      path="/success"
+      element={
+        <AppWrapper>
+          <Success />
+        </AppWrapper>
+      }
+    />
   </>
 );
 

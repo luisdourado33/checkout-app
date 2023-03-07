@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import styled, { css } from "styled-components";
+
 import type { InputProps } from "./input.types";
 
 export const BaseInput = styled.input<InputProps>`
