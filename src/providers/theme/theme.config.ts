@@ -42,6 +42,6 @@ export const theme: DefaultTheme = {
   },
   breakpoints: IBreakpoints,
   transition: {
-    default: "all 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53)",
+    default: "all 0.3s cubic-bezier(0.64, 0.57, 0.67, 1.53)",
   },
 };
