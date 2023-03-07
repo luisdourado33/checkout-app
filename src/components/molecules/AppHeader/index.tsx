@@ -2,15 +2,19 @@ import React from "react";
 
 import { useTheme } from "styled-components";
 
-import { Brand } from "components/atoms";
+import { Brand, Icon } from "components/atoms";
 import { Header } from "./styles";
+
+import { arrowLeft } from "assets/icons";
 
 interface Props {
   hasBackButton?: boolean;
 }
 export const AppHeader: React.FC<Props> = ({ hasBackButton }): JSX.Element => {
   const theme = useTheme();
-  const renderBackButton = (true ?? false) && <span>Back</span>;
+  const renderBackButton = (hasBackButton ?? false) && (
+    <Icon icon={arrowLeft} />
+  );
 
   return (
     <Header

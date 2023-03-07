@@ -9,3 +9,4 @@ export * from "./CardFlag";
 export * from "./Wrapper";
 export * from "./Button";
 export * from "./Badge";
+export * from "./Card";

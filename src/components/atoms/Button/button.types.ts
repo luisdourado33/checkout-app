@@ -1,8 +1,5 @@
-// interface ButtonBaseProps {
-// }
-
 export interface BaseButtonProps {
-  variant: "solid" | "outline";
+  variant: "solid" | "outline" | "text";
 }
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &

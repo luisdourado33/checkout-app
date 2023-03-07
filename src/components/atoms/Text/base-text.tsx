@@ -26,4 +26,29 @@ export const BaseText = styled.p<TextProps>`
     css`
       color: ${props.color};
     `}
+
+    ${(props) =>
+    props.my &&
+    css`
+      margin-block: ${props.my};
+    `}
+
+      ${(props) =>
+    props.mx &&
+    css`
+      margin-inline: ${props.mx};
+    `}
+
+
+    ${(props) =>
+    props.w &&
+    css`
+      width: ${props.w};
+    `}
+
+      ${(props) =>
+    props.h &&
+    css`
+      height: ${props.h};
+    `}
 `;

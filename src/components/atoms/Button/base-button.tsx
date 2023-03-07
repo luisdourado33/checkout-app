@@ -23,4 +23,12 @@ export const BaseButton = styled.button<ButtonProps>`
       color: ${theme.colors.main.primary};
       border: 1px solid ${theme.colors.main.primary};
     `}
+
+    ${({ variant, theme }) =>
+    variant === "text" &&
+    css`
+      background-color: transparent;
+      color: ${theme.colors.main.primary};
+      border: unset;
+    `}
 `;

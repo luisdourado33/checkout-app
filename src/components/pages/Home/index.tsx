@@ -7,14 +7,15 @@ import type { CardFlagProps } from "utils";
 
 import { AppHeader } from "components/molecules";
 import { PaymentForm, PlanList } from "components/organisms";
-
 import { Container, Box, Text, CardFlag, Badge } from "components/atoms";
+
 import { ContainerForm, Content } from "./styles";
 
 import iuguIcon from "assets/icons/iugu.svg";
 
 export const Home: React.FC<any> = () => {
   const themeConfig = useTheme();
+
   const renderCardFlags = useMemo(() => {
     return cardFlags.map((item: CardFlagProps) => (
       <CardFlag key={item.name} flag={item.flag} name={item.name} />
@@ -23,7 +24,7 @@ export const Home: React.FC<any> = () => {
 
   return (
     <Container fluid d="flex" flexDirection="column">
-      <AppHeader />
+      <AppHeader hasBackButton={false} />
       <Content
         fluid
         d="flex"
@@ -89,5 +90,3 @@ export const Home: React.FC<any> = () => {
     </Container>
   );
 };
-
-export default Home;

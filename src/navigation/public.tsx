@@ -6,11 +6,12 @@ import {
   Route,
 } from "react-router-dom";
 
-import Home from "components/pages/Home";
+import { Home, Success } from "components/pages";
 
 export const mappedRoutes = createRoutesFromElements(
   <>
     <Route path="/" element={<Home />} />
+    <Route path="/success" element={<Success />} />
   </>
 );
 
