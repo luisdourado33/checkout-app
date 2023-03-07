@@ -22,7 +22,7 @@ export const Home: React.FC<any> = () => {
   }, cardFlags);
 
   return (
-    <Container fluid h="100%">
+    <Container fluid d="flex" flexDirection="column">
       <AppHeader />
       <Content
         fluid
