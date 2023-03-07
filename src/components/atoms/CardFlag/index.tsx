@@ -5,6 +5,7 @@ import type { CardFlagProps } from "utils";
 
 const Image = styled.img`
   transition: ${({ theme }) => theme.transition.default}
+  
   &:hover {
     transform: scale(1.1);
   }
