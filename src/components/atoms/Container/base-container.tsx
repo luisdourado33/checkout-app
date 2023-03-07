@@ -27,6 +27,12 @@ export const BaseContainer = styled.div<ContainerProps>`
       justify-content: ${props.justifyContent};
     `}
 
+      ${(props) =>
+    props.flexDirection &&
+    css`
+      flex-direction: ${props.flexDirection};
+    `}
+
   ${(props) =>
     props.w &&
     css`

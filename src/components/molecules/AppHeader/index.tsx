@@ -1,22 +1,26 @@
 import React from "react";
 
-import { Brand, Header, Icon } from "components/atoms";
 import { useTheme } from "styled-components";
 
-export const AppHeader = (): JSX.Element => {
+import { Brand } from "components/atoms";
+import { Header } from "./styles";
+
+interface Props {
+  hasBackButton?: boolean;
+}
+export const AppHeader: React.FC<Props> = ({ hasBackButton }): JSX.Element => {
   const theme = useTheme();
+  const renderBackButton = (true ?? false) && <span>Back</span>;
+
   return (
     <Header
       d="flex"
       align="center"
-      justifyContent="space-between"
       px={theme.spacing.inline}
       py={theme.spacing.block}
     >
-      <Icon iconName="arrow-left" />
-      <span>Back</span>
-      <Brand />
-      <span></span>
+      {renderBackButton}
+      <Brand style={{ margin: "0 auto" }} />
     </Header>
   );
 };
