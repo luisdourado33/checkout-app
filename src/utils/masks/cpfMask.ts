@@ -4,7 +4,7 @@ export const cpfMask = (cpf: string): string => {
 
   if (match != null) {
     return match[1] + "." + match[2] + "." + match[3] + "-" + match[4];
-  } else {
-    return cpf;
   }
+
+  return cpf;
 };
