@@ -1,5 +1,5 @@
 import React from "react";
-import { circleCheck } from "assets/icons";
+import { circleCheck } from "lib/icons";
 import { useTheme } from "styled-components";
 
 import { Box, Button, Card, Container, Icon, Text } from "components/atoms";

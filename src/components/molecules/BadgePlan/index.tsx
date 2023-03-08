@@ -1,5 +1,5 @@
 import React from "react";
-import { circleStar } from "assets/icons";
+import { circleStar } from "lib/icons";
 import { useTheme } from "styled-components";
 
 import { Box, Icon, Text, Wrapper } from "components/atoms";
