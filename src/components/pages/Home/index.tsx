@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import iuguIcon from "assets/icons/iugu.svg";
+import { iuguIcon } from "lib/icons";
 import { useTheme } from "styled-components";
 import type { CardFlagProps } from "utils/card-flags";
 import { cardFlags } from "utils/card-flags";
