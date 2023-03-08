@@ -17,13 +17,7 @@ export const PaymentForm: React.FC<any> = () => {
           type="text"
           style={{ marginBottom: "30px" }}
         />
-        <Wrapper
-          d="flex"
-          w="100%"
-          style={{
-            marginBottom: 30,
-          }}
-        >
+        <Wrapper d="flex" w="100%" mb="30px">
           <Input
             id="expiration-date"
             label="Data de Validade"
@@ -77,7 +71,7 @@ export const PaymentForm: React.FC<any> = () => {
           type="number"
           style={{ marginBottom: "30px" }}
         />
-        <Button variant="solid" style={{ width: "100%" }}>
+        <Button w="100%" variant="solid">
           Finalizar pagamento
         </Button>
       </Form>

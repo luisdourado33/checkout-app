@@ -35,6 +35,12 @@ export const BaseHeader = styled.header<HeaderProps>`
     `}
 
   ${(props) =>
+    props.p &&
+    css`
+      padding: ${props.p};
+    `}
+
+  ${(props) =>
     props.px &&
     css`
       padding-inline: ${props.px};
@@ -56,5 +62,17 @@ export const BaseHeader = styled.header<HeaderProps>`
     props.my &&
     css`
       margin-block: ${props.my};
+    `}
+
+    ${(props) =>
+    props.bgColor &&
+    css`
+      background-color: ${props.bgColor};
+    `}
+
+    ${(props) =>
+    props.position &&
+    css`
+      position: ${props.position};
     `}
 `;

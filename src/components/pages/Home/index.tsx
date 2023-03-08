@@ -28,39 +28,26 @@ export const Home: React.FC<any> = () => {
         py="50px"
       >
         <ContainerForm mx="10px" d="flex" h="100%" flexDirection="column">
-          <Text
-            fontSize="20px"
-            fontWeight="400px"
-            style={{ marginBottom: "9px" }}
-          >
+          <Text fontSize="20px" fontWeight="400px" mb="9px">
             Estamos quase lá!
           </Text>
 
-          <Text style={{ marginBottom: "30px" }}>
-            Insira seus dados de pagamento abaixo:
-          </Text>
+          <Text mb="30px">Insira seus dados de pagamento abaixo:</Text>
           <Box
             d="flex"
             align="center"
             justifyContent="center"
-            style={{
-              marginBottom: "10px",
-              gap: "10px",
-            }}
+            mb="10px"
+            gap="10px"
           >
             {renderCardFlags}
           </Box>
-          <Box
-            d="flex"
-            align="center"
-            justifyContent="center"
-            style={{ marginBottom: 8 }}
-          >
+          <Box d="flex" align="center" justifyContent="center" mb="8px">
             <Text
               textAlign="center"
               fontSize="10px"
               color={themeConfig.colors.common.mediumGray}
-              style={{ marginRight: 7 }}
+              mr="7px"
             >
               Pagamento por
             </Text>
@@ -69,11 +56,7 @@ export const Home: React.FC<any> = () => {
           <PaymentForm />
         </ContainerForm>
         <Box>
-          <Text
-            fontSize="20px"
-            fontWeight="400px"
-            style={{ marginBottom: "8px" }}
-          >
+          <Text fontSize="20px" fontWeight="400px" mb="8px">
             Confira seu plano
           </Text>
           <Badge w="fit-content" my="10px">

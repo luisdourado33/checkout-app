@@ -40,6 +40,17 @@ export const BaseText = styled.p<TextProps>`
       margin-inline: ${props.mx};
     `}
 
+    ${(props) =>
+    props.mb &&
+    css`
+      margin-bottom: ${props.mb};
+    `}
+
+      ${(props) =>
+    props.mr &&
+    css`
+      margin-right: ${props.mr};
+    `}
 
     ${(props) =>
     props.w &&

@@ -34,23 +34,19 @@ export const Success: React.FC<any> = () => {
           w="250px"
           textAlign="center"
           color={theme.colors.common.mediumGray}
-          style={{
-            marginBottom: "71.8px",
-          }}
+          mb="71.8px"
         >
           Sua assinatura foi realizada com sucesso.
         </Text>
 
-        <Card style={{ marginBottom: "88px" }}>
+        <Card mb="88px">
           <BadgePlan />
           <Box
             d="flex"
             justifyContent="space-between"
             align="center"
             px="20px"
-            style={{
-              paddingTop: "19px",
-            }}
+            pt="19px"
           >
             <Text color={theme.colors.common.mediumGray}>E-mail</Text>
             <Text color="#151516">fulano@cicrano.com.br</Text>
@@ -61,23 +57,18 @@ export const Success: React.FC<any> = () => {
             justifyContent="space-between"
             align="center"
             px="20px"
-            style={{
-              paddingTop: "19px",
-            }}
+            pt="19px"
           >
             <Text color={theme.colors.common.mediumGray}>CPF</Text>
             <Text color="#151516">000.000.000-00</Text>
           </Box>
         </Card>
 
-        <Button
-          variant="text"
-          style={{ width: "fit-content", marginBottom: "24px" }}
-        >
+        <Button w="fit-content" mb="24px" variant="text">
           <Text fontWeight="bold">Gerenciar assinaturas</Text>
         </Button>
 
-        <Button variant="solid" style={{ marginBottom: "48px" }}>
+        <Button variant="solid" mb="48px">
           IR PARA HOME
         </Button>
       </Content>

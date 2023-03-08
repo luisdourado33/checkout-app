@@ -59,6 +59,24 @@ export const BaseBox = styled.div<BoxProps>`
       padding-block: ${props.py};
     `}
 
+    ${(props) =>
+    props.pt &&
+    css`
+      padding-top: ${props.pt};
+    `}
+
+      ${(props) =>
+    props.pb &&
+    css`
+      padding-bottom: ${props.pb};
+    `}
+
+    ${(props) =>
+    props.p &&
+    css`
+      padding: ${props.p};
+    `}
+
   ${(props) =>
     props.mx &&
     css`
@@ -69,5 +87,47 @@ export const BaseBox = styled.div<BoxProps>`
     props.my &&
     css`
       margin-block: ${props.my};
+    `}
+
+    ${(props) =>
+    props.mb &&
+    css`
+      margin-bottom: ${props.mb};
+    `}
+
+    ${(props) =>
+    props.borderRadius &&
+    css`
+      border-radius: ${props.borderRadius};
+    `}
+
+    ${(props) =>
+    props.bgColor &&
+    css`
+      background-color: ${props.bgColor};
+    `}
+
+      ${(props) =>
+    props.gap &&
+    css`
+      gap: ${props.gap};
+    `}
+
+    ${(props) =>
+    props.borderRadius &&
+    css`
+      border-radius: ${props.borderRadius};
+    `}
+
+    ${(props) =>
+    props.border &&
+    css`
+      border: ${props.border};
+    `}
+
+      ${(props) =>
+    props.cursor &&
+    css`
+      cursor: ${props.cursor};
     `}
 `;
