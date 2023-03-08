@@ -3,3 +3,6 @@ src/*.test.ts
 src/*.test.tsx
 vite.config.ts
 src/*.d.ts
+jest.config.ts
+jest-setup.ts
+test

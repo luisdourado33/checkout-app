@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 import iuguIcon from "assets/icons/iugu.svg";
 import { useTheme } from "styled-components";
-import type { CardFlagProps } from "utils";
-import { cardFlags } from "utils";
+import type { CardFlagProps } from "utils/card-flags";
+import { cardFlags } from "utils/card-flags";
 
 import { Badge, Box, CardFlag, Container, Text } from "components/atoms";
 import { PaymentForm, PlanList } from "components/organisms";
