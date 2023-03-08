@@ -5,6 +5,7 @@ import { Box } from "components/atoms";
 export const InfoPlanCard = styled(Box)`
   transition: all 0.2s;
   min-width: 330px;
+  border: 1px solid ${({ theme }) => theme.colors.main.primary};
 
   &:hover {
     transform: scale(1.009);
