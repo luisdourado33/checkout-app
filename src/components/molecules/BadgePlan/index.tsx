@@ -13,17 +13,15 @@ export const BadgePlan: React.FC<any> = () => {
       align="center"
       px="20px"
       py="16px"
-      style={{
-        borderRadius: "15px",
-        backgroundColor: theme.colors.common.lightGray,
-      }}
+      borderRadius="15px"
+      bgColor={theme.colors.common.lightGray}
     >
       <Icon icon={circleStar} />
       <Wrapper d="flex" flexDirection="column" align="flex-end">
         <Text
           fontSize="16px"
           fontWeight="400"
-          style={{ marginBottom: "8px" }}
+          mb="8px"
           color={theme.colors.main.primary}
         >
           Anual | Parcelado

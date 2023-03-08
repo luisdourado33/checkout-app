@@ -12,27 +12,19 @@ export const InfoPlan = (): any => {
       w="auto"
       h="100px"
       d="flex"
+      p="20px"
+      mb="12px"
+      cursor="pointer"
+      borderRadius="15px"
       flexDirection="column"
       justifyContent="center"
-      style={{
-        padding: "20px",
-        borderRadius: "15px",
-        border: `1px solid ${theme.colors.main.primary}`,
-        marginBottom: "12px",
-        cursor: "pointer",
-      }}
     >
       <Text fontWeight="bold" color={theme.colors.main.primary}>
         Anual | À Vista
       </Text>
       <Box d="flex" justifyContent="space-between" align="center" my="4px">
         <Text>De R$ 514,80 | Por R$ 479,90</Text>
-        <Badge
-          style={{
-            backgroundColor: theme.colors.main.secondary,
-            color: "#ffff",
-          }}
-        >
+        <Badge bgColor={theme.colors.main.secondary} color="#ffff">
           -15%
         </Badge>
         <input type="radio" />

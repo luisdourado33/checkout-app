@@ -63,4 +63,10 @@ export const BaseWrapper = styled.div<WrapperProps>`
     css`
       margin-block: ${props.my};
     `}
+
+    ${(props) =>
+    props.mb &&
+    css`
+      margin-bottom: ${props.mb};
+    `}
 `;

@@ -76,4 +76,16 @@ ${(props) =>
     css`
       margin-block: ${props.my};
     `}
+
+${(props) =>
+    props.bgColor &&
+    css`
+      background-color: ${props.bgColor};
+    `}
+
+    ${(props) =>
+    props.color &&
+    css`
+      color: ${props.color};
+    `}
 `;

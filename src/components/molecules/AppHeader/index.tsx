@@ -25,7 +25,7 @@ export const AppHeader: React.FC<HeaderProps> = ({
   };
 
   const renderBackButton = showBackButton && (
-    <Button variant="text" onClick={handleGoBack}>
+    <Button variant="text" onClick={handleGoBack} p="0" flex="0 0 auto">
       <Icon icon={arrowLeft} />
     </Button>
   );
@@ -40,11 +40,22 @@ export const AppHeader: React.FC<HeaderProps> = ({
     <Header
       d="flex"
       align="center"
-      px={theme.spacing.inline}
+      justifyContent="flex-start"
+      px="68px"
       py={theme.spacing.block}
+      position="relative"
     >
       {renderBackButton}
-      <Brand style={{ margin: "0 auto" }} />
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Brand />
+      </div>
     </Header>
   );
 };
