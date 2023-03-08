@@ -25,3 +25,6 @@ dist-ssr
 
 # IDE config file/directory
 .idea
+
+# Test coverage
+coverage
