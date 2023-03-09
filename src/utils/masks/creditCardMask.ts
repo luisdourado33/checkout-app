@@ -4,7 +4,5 @@ export const formatCreditCardNumber = (input: string): string => {
 
   const groups = digitsOnly.match(/.{1,4}/g);
 
-  const formatted = groups ? groups.join("-") : "";
-
-  return formatted;
+  return groups ? groups.join("-") : "";
 };
