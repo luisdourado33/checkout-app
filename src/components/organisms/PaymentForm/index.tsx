@@ -2,22 +2,69 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React from "react";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { type ICheckoutForm } from "@types";
 import { useAppSelector } from "hooks/useReduxHook";
 import { selectAuthenticated } from "store/reducers";
 import styled from "styled-components";
+import { isValidCPF, isValidCreditCard } from "utils/validators";
+import * as yup from "yup";
 
 import { Box, Button, Input, Wrapper } from "components/atoms";
-
 export const Form = styled.form``;
 
 export const PaymentForm: React.FC<any> = () => {
+  yup.addMethod(yup.string, "isValidCPF", function (errorMessage: string) {
+    return this.test(`test-cpf-format`, errorMessage, function (value: any) {
+      const { path, createError } = this;
+
+      return isValidCPF(value) || createError({ path, message: errorMessage });
+    });
+  });
+
+  yup.addMethod(
+    yup.string,
+    "isValidCreditCard",
+    function (errorMessage: string) {
+      return this.test(
+        `test-credit-card-format`,
+        errorMessage,
+        function (value: any) {
+          const { path, createError } = this;
+
+          return (
+            isValidCreditCard(value) ||
+            createError({ path, message: errorMessage })
+          );
+        }
+      );
+    }
+  );
+
+  const validationSchema = yup.object().shape<any>({
+    creditCardNumber: yup
+      .string()
+      .test(
+        `test-credit-card-format`,
+        "Formato de cartão inválido",
+        (value: any) => {
+          return isValidCreditCard(value);
+        }
+      ),
+    // .required("Campo obrigatórios"),
+    // cvv:
+    // validityDate:
+    // printedName:
+    // cpf:
+    // installments:
+  });
+
   const {
     register,
     setValue,
     handleSubmit,
     formState: { errors },
-  } = useForm<ICheckoutForm>();
+  } = useForm<ICheckoutForm>({ resolver: yupResolver(validationSchema) });
   const onSubmit = handleSubmit((data) => {
     console.log(data);
   });
@@ -35,6 +82,7 @@ export const PaymentForm: React.FC<any> = () => {
           type="text"
           style={{ marginBottom: "30px" }}
         />
+        <span>{errors?.creditCardNumber?.message}</span>
         <Wrapper d="flex" w="100%" mb="30px">
           <Input
             {...register("validityDate")}
@@ -93,7 +141,7 @@ export const PaymentForm: React.FC<any> = () => {
           w="100%"
           variant="solid"
           disabled={state.isLoading}
-          type="button"
+          type="submit"
         >
           Finalizar pagamento
         </Button>

@@ -1,6 +1,6 @@
 export const isValidCreditCard = (input: string): boolean => {
   const digitsOnly = input.replace(/\D/g, "");
-
+  console.log("executing...");
   if (!/^\d{13,19}$/.test(digitsOnly)) {
     return false;
   }
