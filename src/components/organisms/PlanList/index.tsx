@@ -17,7 +17,6 @@ export const PlanList: React.FC<Props> = ({
   selectedOfferId,
 }): any => {
   const handleChangeSelected = (id: number): any => {
-    console.log("dispatching...");
     dispatch(setSelectedOfferId(id));
   };
 

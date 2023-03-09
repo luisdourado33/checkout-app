@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { Text } from "../Text";
+
 import { BaseInput } from "./base-input";
 
 export const Label = styled.label`
@@ -16,9 +18,14 @@ export const InputComponent = styled(BaseInput)`
   font-size: 16px;
   line-height: 20.83px;
   color: #191847;
-  border-color: ${({ theme }) => theme.colors.common.lightGray};
+  border-color: ${({ theme, error }) =>
+    error !== undefined ? "red" : theme.colors.common.lightGray};
   transition: ${({ theme }) => theme.transition.default};
   :focus {
     border-color: ${({ theme }) => theme.colors.main.primary};
   }
+`;
+
+export const HelperText = styled(Text)<{ error: any }>`
+  color: red;
 `;

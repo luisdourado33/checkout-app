@@ -30,10 +30,6 @@ export const Home: React.FC<any> = () => {
     void dispatch(fetchOffers());
   }, []);
 
-  useEffect(() => {
-    console.log(state.isLoading ? "Carregando" : "Carregado");
-  }, [state.isLoading]);
-
   const callbackOnLoading = {
     opacity: state.isLoading ? "0.3" : "1",
     zIndex: state.isLoading ? "-4" : "1",

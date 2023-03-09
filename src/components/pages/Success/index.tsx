@@ -10,7 +10,7 @@ import { BadgePlan } from "components/molecules";
 import { Content } from "./styles";
 
 export const Success: React.FC<any> = () => {
-  const state = useAppSelector(selectAuthenticated);
+  const state: any = useAppSelector(selectAuthenticated);
   const theme = useTheme();
 
   useEffect(() => {

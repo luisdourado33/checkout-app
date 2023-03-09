@@ -1,91 +1,57 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { type ICheckoutForm } from "@types";
 import { useAppSelector } from "hooks/useReduxHook";
-import { selectAuthenticated } from "store/reducers";
+import { selectAuthenticated, setFormFields } from "store/reducers";
 import styled from "styled-components";
-import { isValidCPF, isValidCreditCard } from "utils/validators";
-import * as yup from "yup";
+import { validationSchema } from "utils/validators/validationSchema";
 
 import { Box, Button, Input, Wrapper } from "components/atoms";
 export const Form = styled.form``;
 
 export const PaymentForm: React.FC<any> = () => {
-  yup.addMethod(yup.string, "isValidCPF", function (errorMessage: string) {
-    return this.test(`test-cpf-format`, errorMessage, function (value: any) {
-      const { path, createError } = this;
-
-      return isValidCPF(value) || createError({ path, message: errorMessage });
-    });
-  });
-
-  yup.addMethod(
-    yup.string,
-    "isValidCreditCard",
-    function (errorMessage: string) {
-      return this.test(
-        `test-credit-card-format`,
-        errorMessage,
-        function (value: any) {
-          const { path, createError } = this;
-
-          return (
-            isValidCreditCard(value) ||
-            createError({ path, message: errorMessage })
-          );
-        }
-      );
-    }
-  );
-
-  const validationSchema = yup.object().shape<any>({
-    creditCardNumber: yup
-      .string()
-      .test(
-        `test-credit-card-format`,
-        "Formato de cartão inválido",
-        (value: any) => {
-          return isValidCreditCard(value);
-        }
-      ),
-    // .required("Campo obrigatórios"),
-    // cvv:
-    // validityDate:
-    // printedName:
-    // cpf:
-    // installments:
-  });
-
+  const state = useAppSelector(selectAuthenticated);
   const {
     register,
-    setValue,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm<ICheckoutForm>({ resolver: yupResolver(validationSchema) });
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
+  } = useForm<ICheckoutForm>({
+    resolver: yupResolver(validationSchema),
   });
 
-  const state = useAppSelector(selectAuthenticated);
+  const [formValues, setFormValues] = useState<ICheckoutForm & any>({
+    creditCardNumber: "",
+    cvv: "",
+    printedName: "",
+    cpf: "",
+    installments: 0,
+    validityDate: "",
+    coupomCode: "",
+  });
+
+  const handleSubmitForm = async (data: ICheckoutForm): Promise<void> => {
+    console.log(JSON.stringify(data));
+  };
 
   return (
     <Box w="100%">
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={handleSubmit(handleSubmitForm)}>
         <Input
-          {...register("creditCardNumber")}
           w="100%"
           label="Número do cartão"
           placeholder="0000 0000 0000 0000"
           type="text"
           style={{ marginBottom: "30px" }}
+          register={register("creditCardNumber")}
+          error={errors.creditCardNumber}
         />
-        <span>{errors?.creditCardNumber?.message}</span>
         <Wrapper d="flex" w="100%" mb="30px">
           <Input
-            {...register("validityDate")}
             label="Data de Validade"
             placeholder="MM/AA"
             type="text"
@@ -93,49 +59,56 @@ export const PaymentForm: React.FC<any> = () => {
               marginRight: "30px",
               width: "100%",
             }}
+            register={register("validityDate")}
+            error={errors.validityDate}
           />
 
           <Input
-            {...register("cvv")}
             label="CVV"
             placeholder="000"
             type="number"
             style={{
               width: "100%",
             }}
+            register={register("cvv")}
+            error={errors.cvv}
           />
         </Wrapper>
         <Input
-          {...register("printedName")}
           w="100%"
           label="Nome impresso no cartão"
           placeholder="Seu nome"
           type="text"
           style={{ marginBottom: "30px" }}
+          register={register("printedName")}
+          error={errors.printedName}
         />
         <Input
-          {...register("cpf")}
           w="100%"
           label="CPF"
           placeholder="000.000.000-00"
           type="text"
           style={{ marginBottom: "30px" }}
+          register={register("cpf")}
+          error={errors.cpf}
         />
         <Input
-          {...register("coupomCode")}
           w="100%"
           label="Cupom"
           placeholder="Insira aqui"
           type="text"
           style={{ marginBottom: "30px" }}
+          register={register("coupomCode")}
+          error={errors.coupomCode}
         />
         <Input
-          {...register("installments")}
           w="100%"
           label="Número de parcelas"
           placeholder="Selecionar"
           type="number"
           style={{ marginBottom: "30px" }}
+          register={register("installments")}
+          error={errors.installments}
         />
         <Button
           w="100%"

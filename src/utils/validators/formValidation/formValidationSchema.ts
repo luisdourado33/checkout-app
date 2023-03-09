@@ -5,6 +5,8 @@ import { isValidCreditCard } from "../verifyCreditCard";
 export const register = yup.object().shape({
   creditCardNumber: yup
     .string()
+    .required("Campo obrigatório")
+    .min(10, "Nome muito curto")
     .test(
       `is-invalid-credit-card`,
       "Formato de cartão inválido",

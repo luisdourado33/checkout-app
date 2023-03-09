@@ -18,6 +18,7 @@ export const testSchema = async (
 ): Promise<true | yup.ValidationError[]> => {
   try {
     const formSchema = listSchemas[schema];
+
     await formSchema.validate(value, {
       abortEarly: true,
     });

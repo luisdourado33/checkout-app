@@ -6,6 +6,9 @@ interface InputBaseProps {
   children?: React.ReactNode;
   label?: string;
   style?: CSSProperties;
+  helperText?: string;
+  error?: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export type InputProps = BaseComponentProps &

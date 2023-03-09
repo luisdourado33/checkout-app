@@ -28,7 +28,9 @@ export const useFormValidation = <Form = DefaultForm>(
     (item: keyof Form, helperText?: string) => {
       if (errorItems) {
         const error = errorItems.errors.find((err) => err.item === item);
-        if (error) return { error: true, helperText: error?.message };
+        if (error) {
+          return { error: true, helperText: error?.message };
+        }
       }
 
       return { helperText };

@@ -3,19 +3,20 @@ import React from "react";
 
 import { Wrapper } from "../Wrapper";
 
-import { InputComponent, Label } from "./styles";
+import { HelperText, InputComponent, Label } from "./styles";
 
-export const Input = React.forwardRef((props: any, ref) => {
-  console.log(props);
+export const Input = React.forwardRef((props: any, ref: any) => {
   return (
     <Wrapper d="flex" flexDirection="column" style={props.style ?? {}}>
       <Label htmlFor={props.id}>{props.label}</Label>
       <InputComponent
-        innerRef={ref}
-        {...props}
+        {...props.register}
         placeholder={props.placeholder}
         type={props.type}
       />
+      <HelperText error={props.error?.message} fontSize="13px" mt="2px">
+        {props.error?.message}
+      </HelperText>
     </Wrapper>
   );
 });

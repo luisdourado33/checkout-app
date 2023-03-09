@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 
 import { type InputProps } from "./input.types";
 
-export const BaseInput = styled.input<InputProps>`
+export const BaseInput = styled.input<InputProps | any>`
   ${(props) =>
     props.d &&
     css`
