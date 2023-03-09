@@ -1,4 +1,4 @@
-export const cpfMask = (cpf: string): string => {
+export const formatCPF = (cpf: string): string => {
   const cpfRegex = /^(\d{3})(\d{3})(\d{3})(\d{2})$/;
   const match = cpf.match(cpfRegex);
 
