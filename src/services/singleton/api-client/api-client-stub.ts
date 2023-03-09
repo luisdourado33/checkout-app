@@ -1,22 +1,23 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 
 import type { IOffer, ISubscription } from "@types";
-import authorizedRequest, { parseResponse } from "services/fetch";
 
-export class ApiClient {
-  private static instance: ApiClient;
+import authorizedRequest, { parseResponse } from "../../fetch";
+
+export class ApiClientStub {
+  private static instance: ApiClientStub;
   baseUrl: string;
 
   private constructor() {
-    this.baseUrl = import.meta.env.VITE_API_BASE_URL;
+    this.baseUrl = "";
   }
 
-  public static getInstance(): ApiClient {
-    if (!ApiClient.instance) {
-      ApiClient.instance = new ApiClient();
+  public static getInstance(): ApiClientStub {
+    if (!ApiClientStub.instance) {
+      ApiClientStub.instance = new ApiClientStub();
     }
 
-    return ApiClient.instance;
+    return ApiClientStub.instance;
   }
 
   public async getOffers(): Promise<IOffer[]> {
@@ -25,7 +26,7 @@ export class ApiClient {
     }).then(parseResponse);
   }
 
-  public async getSubscriptions(): Promise<ISubscription[]> {
+  public async getSubscriptions(): Promise<ISubscription[] | ISubscription> {
     return await authorizedRequest(this.baseUrl + "/subscription", {
       method: "GET",
     }).then(parseResponse);
