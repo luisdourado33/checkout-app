@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { iuguIcon } from "lib/icons";
 import { useTheme } from "styled-components";
-import type { CardFlagProps } from "utils/card-flags";
+import { type CardFlagProps } from "utils/card-flags";
 import { cardFlags } from "utils/card-flags";
 
 import { Badge, Box, CardFlag, Container, Text } from "components/atoms";

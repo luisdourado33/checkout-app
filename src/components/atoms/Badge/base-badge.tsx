@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import styled, { css } from "styled-components";
 
-import type { BadgeProps } from "./badge.types";
+import { type BadgeProps } from "./badge.types";
 
 export const BaseBadge = styled.p<BadgeProps>`
   box-sizing: border-box;

@@ -1,4 +1,4 @@
-import type { DefaultTheme } from "styled-components";
+import { type DefaultTheme } from "styled-components";
 
 export const IFontSize = {
   xs: "0.8rem",

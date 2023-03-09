@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import styled, { css } from "styled-components";
 
-import type { ButtonProps } from "./button.types";
+import { type ButtonProps } from "./button.types";
 
 export const BaseButton = styled.button<ButtonProps>`
   border-radius: 25px;

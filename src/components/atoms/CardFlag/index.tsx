@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import type { CardFlagProps } from "utils/card-flags";
+import { type CardFlagProps } from "utils/card-flags";
 
 const Image = styled.img`
   transition: ${({ theme }) => theme.transition.default}

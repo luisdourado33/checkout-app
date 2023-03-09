@@ -24,7 +24,6 @@ export const authenticatedSlice = createSlice({
   name: "authenticated",
   initialState,
   reducers: {
-    getFormFields: (state) => {},
     setFormFields: (state, action: PayloadAction<ICheckoutForm>) => {
       state.formFields = action.payload;
     },
@@ -38,6 +37,6 @@ export const authenticatedSlice = createSlice({
   },
 });
 
-export const { getFormFields, setFormFields } = authenticatedSlice.actions;
+export const { setFormFields, toggleIsFormFilled } = authenticatedSlice.actions;
 export const selectAuthenticated = (state: RootState) => state.authenticated;
 export default authenticatedSlice.reducer;
