@@ -1,4 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import React from "react";
+import { useForm } from "react-hook-form";
+import { type ICheckoutForm } from "@types";
 import { useAppSelector } from "hooks/useReduxHook";
 import { selectAuthenticated } from "store/reducers";
 import styled from "styled-components";
@@ -8,13 +12,23 @@ import { Box, Button, Input, Wrapper } from "components/atoms";
 export const Form = styled.form``;
 
 export const PaymentForm: React.FC<any> = () => {
+  const {
+    register,
+    setValue,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ICheckoutForm>();
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+  });
+
   const state = useAppSelector(selectAuthenticated);
 
   return (
     <Box w="100%">
-      <Form>
+      <Form onSubmit={onSubmit}>
         <Input
-          id="card-number"
+          {...register("creditCardNumber")}
           w="100%"
           label="Número do cartão"
           placeholder="0000 0000 0000 0000"
@@ -23,7 +37,7 @@ export const PaymentForm: React.FC<any> = () => {
         />
         <Wrapper d="flex" w="100%" mb="30px">
           <Input
-            id="expiration-date"
+            {...register("validityDate")}
             label="Data de Validade"
             placeholder="MM/AA"
             type="text"
@@ -34,7 +48,7 @@ export const PaymentForm: React.FC<any> = () => {
           />
 
           <Input
-            id="cvv"
+            {...register("cvv")}
             label="CVV"
             placeholder="000"
             type="number"
@@ -44,7 +58,7 @@ export const PaymentForm: React.FC<any> = () => {
           />
         </Wrapper>
         <Input
-          id="name-in-card"
+          {...register("printedName")}
           w="100%"
           label="Nome impresso no cartão"
           placeholder="Seu nome"
@@ -52,7 +66,7 @@ export const PaymentForm: React.FC<any> = () => {
           style={{ marginBottom: "30px" }}
         />
         <Input
-          id="document"
+          {...register("cpf")}
           w="100%"
           label="CPF"
           placeholder="000.000.000-00"
@@ -60,7 +74,7 @@ export const PaymentForm: React.FC<any> = () => {
           style={{ marginBottom: "30px" }}
         />
         <Input
-          id="coupom"
+          {...register("coupomCode")}
           w="100%"
           label="Cupom"
           placeholder="Insira aqui"
@@ -68,14 +82,19 @@ export const PaymentForm: React.FC<any> = () => {
           style={{ marginBottom: "30px" }}
         />
         <Input
-          id="installments"
+          {...register("installments")}
           w="100%"
           label="Número de parcelas"
           placeholder="Selecionar"
           type="number"
           style={{ marginBottom: "30px" }}
         />
-        <Button w="100%" variant="solid" disabled={state.isLoading}>
+        <Button
+          w="100%"
+          variant="solid"
+          disabled={state.isLoading}
+          type="button"
+        >
           Finalizar pagamento
         </Button>
       </Form>
