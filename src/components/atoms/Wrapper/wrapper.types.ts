@@ -1,4 +1,4 @@
-import type { BaseComponentProps } from "components/@types";
+import { type BaseComponentProps } from "components/@types";
 
 interface WrapperBaseProps {
   children?: React.ReactNode;

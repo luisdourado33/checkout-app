@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import type { Location } from "react-router-dom";
+import { type Location } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { arrowLeft } from "lib/icons";
 import { useTheme } from "styled-components";

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import styled, { css } from "styled-components";
 
-import type { TextProps } from "./text.types";
+import { type TextProps } from "./text.types";
 
 export const BaseText = styled.p<TextProps>`
   ${(props) =>
@@ -50,6 +50,12 @@ export const BaseText = styled.p<TextProps>`
     props.mr &&
     css`
       margin-right: ${props.mr};
+    `}
+
+          ${(props) =>
+    props.mt &&
+    css`
+      margin-top: ${props.mt};
     `}
 
     ${(props) =>

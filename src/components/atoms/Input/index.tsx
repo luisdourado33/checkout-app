@@ -2,7 +2,7 @@ import React from "react";
 
 import { Wrapper } from "../Wrapper";
 
-import type { InputProps } from "./input.types";
+import { type InputProps } from "./input.types";
 import { InputComponent, Label } from "./styles";
 
 export const Input = (props: InputProps): JSX.Element => {

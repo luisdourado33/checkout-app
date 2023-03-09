@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 
-import type { IOffer, ISubscription } from "@types";
+import { type IOffer, type ISubscription } from "@types";
 
 import authorizedRequest, { parseResponse } from "../../fetch";
 

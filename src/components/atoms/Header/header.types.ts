@@ -1,4 +1,4 @@
-import type { BaseComponentProps } from "components/@types";
+import { type BaseComponentProps } from "components/@types";
 
 interface HeaderBaseProps {
   children?: React.ReactNode;

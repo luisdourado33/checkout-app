@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import styled, { css } from "styled-components";
 
-import type { ContainerProps } from "./container.types";
+import { type ContainerProps } from "./container.types";
 
 export const BaseContainer = styled.div<ContainerProps>`
   ${(props) =>
@@ -74,5 +74,17 @@ export const BaseContainer = styled.div<ContainerProps>`
     props.fluid &&
     css`
       width: 100%;
+    `}
+
+    ${(props) =>
+    props.bgColor &&
+    css`
+      background-color: ${props.bgColor};
+    `}
+
+        ${(props) =>
+    props.position &&
+    css`
+      position: ${props.position};
     `}
 `;

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import styled, { css } from "styled-components";
 
-import type { WrapperProps } from "./wrapper.types";
+import { type WrapperProps } from "./wrapper.types";
 
 export const BaseWrapper = styled.div<WrapperProps>`
   ${(props) =>

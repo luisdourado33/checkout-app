@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useAppSelector } from "hooks/useReduxHook";
 import { circleCheck } from "lib/icons";
+import { selectAuthenticated } from "store/reducers";
 import { useTheme } from "styled-components";
 
 import { Box, Button, Card, Container, Icon, Text } from "components/atoms";
@@ -8,7 +10,13 @@ import { BadgePlan } from "components/molecules";
 import { Content } from "./styles";
 
 export const Success: React.FC<any> = () => {
+  const state = useAppSelector(selectAuthenticated);
   const theme = useTheme();
+
+  useEffect(() => {
+    console.log(state);
+  });
+
   return (
     <Container fluid d="flex" flexDirection="column" h="100%">
       <Content fluid d="flex" flexDirection="column" align="center">

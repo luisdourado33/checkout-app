@@ -1,15 +1,20 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { Box } from "components/atoms";
 
-export const InfoPlanCard = styled(Box)`
+export const InfoPlanCard = styled(Box)<{ selected: boolean }>`
   transition: all 0.2s;
   min-width: 330px;
   border: 1px solid ${({ theme }) => theme.colors.main.primary};
 
   &:hover {
-    transform: scale(1.009);
   }
+
+  ${({ selected }) =>
+    selected &&
+    css`
+      border: 1px solid ${({ theme }) => theme.colors.main.secondary};
+    `}
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
     min-width: auto;
