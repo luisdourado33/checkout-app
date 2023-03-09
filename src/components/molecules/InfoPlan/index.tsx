@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable react/display-name */
+import React, { memo } from "react";
 import { type IOffer } from "@types";
 import { useTheme } from "styled-components";
 import { getCurrencyFormat } from "utils/masks";
@@ -15,7 +16,7 @@ interface InfoPlanProps {
 
 type Props = Partial<IOffer> & InfoPlanProps;
 
-export const InfoPlan = (props: Props): any => {
+export const InfoPlan = memo((props: Props) => {
   const theme = useTheme();
 
   const fullPrice = getCurrencyFormat(props?.fullPrice ?? 0);
@@ -30,6 +31,8 @@ export const InfoPlan = (props: Props): any => {
       ? props?.installments
       : 1);
 
+  const isSelected = props?.selected === props?.id;
+
   return (
     <InfoPlanCard
       w="auto"
@@ -41,6 +44,7 @@ export const InfoPlan = (props: Props): any => {
       borderRadius="15px"
       flexDirection="column"
       justifyContent="center"
+      selected={isSelected}
       onClick={props?.onClick}
     >
       <Text fontWeight="bold" color={theme.colors.main.primary}>
@@ -53,7 +57,7 @@ export const InfoPlan = (props: Props): any => {
         <Badge bgColor={theme.colors.main.secondary} color="#ffff">
           -{(props?.discountPercentage ?? 0) * 100}%
         </Badge>
-        <input type="radio" checked={props?.selected === props?.id} readOnly />
+        <input type="radio" checked={isSelected} readOnly />
       </Box>
       <Text color={theme.colors.main.secondary}>
         {props?.installments ?? 1}x de {getCurrencyFormat(monthlyInstallment)}
@@ -61,4 +65,4 @@ export const InfoPlan = (props: Props): any => {
       </Text>
     </InfoPlanCard>
   );
-};
+});
