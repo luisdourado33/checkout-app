@@ -3,6 +3,7 @@ import { type IFontSize, type IFontWeight } from "lib/theme";
 
 export interface BaseComponentProps {
   id?: string;
+  onClick?: any;
   d?: "flex" | "block" | "static";
   align?: "stretch" | "flex-start" | "center" | "flex-end";
   flexDirection?: "row" | "column";

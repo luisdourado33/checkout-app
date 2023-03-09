@@ -1,4 +1,6 @@
 import React from "react";
+import { useAppSelector } from "hooks/useReduxHook";
+import { selectAuthenticated } from "store/reducers";
 import styled from "styled-components";
 
 import { Box, Button, Input, Wrapper } from "components/atoms";
@@ -6,6 +8,8 @@ import { Box, Button, Input, Wrapper } from "components/atoms";
 export const Form = styled.form``;
 
 export const PaymentForm: React.FC<any> = () => {
+  const state = useAppSelector(selectAuthenticated);
+
   return (
     <Box w="100%">
       <Form>
@@ -71,7 +75,7 @@ export const PaymentForm: React.FC<any> = () => {
           type="number"
           style={{ marginBottom: "30px" }}
         />
-        <Button w="100%" variant="solid">
+        <Button w="100%" variant="solid" disabled={state.isLoading}>
           Finalizar pagamento
         </Button>
       </Form>

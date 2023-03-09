@@ -1,5 +1,10 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
+import { useAppDispatch, useAppSelector } from "hooks/useReduxHook";
 import { iuguIcon } from "lib/icons";
+import {
+  fetchOffers,
+  selectAuthenticated,
+} from "store/reducers/authenticatedSlice";
 import { useTheme } from "styled-components";
 import { type CardFlagProps } from "utils/card-flags";
 import { cardFlags } from "utils/card-flags";
@@ -10,6 +15,9 @@ import { PaymentForm, PlanList } from "components/organisms";
 import { ContainerForm, Content } from "./styles";
 
 export const Home: React.FC<any> = () => {
+  const state = useAppSelector(selectAuthenticated);
+  const dispatch = useAppDispatch();
+
   const themeConfig = useTheme();
 
   const renderCardFlags = useMemo(() => {
@@ -18,8 +26,27 @@ export const Home: React.FC<any> = () => {
     ));
   }, cardFlags);
 
+  useEffect(() => {
+    void dispatch(fetchOffers());
+  }, []);
+
+  useEffect(() => {
+    console.log(state.isLoading ? "Carregando" : "Carregado");
+  }, [state.isLoading]);
+
+  const callbackOnLoading = {
+    opacity: state.isLoading ? "0.3" : "1",
+    zIndex: state.isLoading ? "-4" : "1",
+  };
+
   return (
-    <Container fluid d="flex" flexDirection="column">
+    <Container
+      fluid
+      d="flex"
+      flexDirection="column"
+      position="relative"
+      style={callbackOnLoading}
+    >
       <Content
         fluid
         d="flex"
@@ -62,7 +89,11 @@ export const Home: React.FC<any> = () => {
           <Badge w="fit-content" my="10px">
             fulano@cicrano.com.br
           </Badge>
-          <PlanList />
+          <PlanList
+            list={state.offers}
+            dispatch={dispatch}
+            selectedOfferId={state.selectedOfferId}
+          />
         </Box>
       </Content>
     </Container>

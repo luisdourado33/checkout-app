@@ -75,4 +75,16 @@ export const BaseContainer = styled.div<ContainerProps>`
     css`
       width: 100%;
     `}
+
+    ${(props) =>
+    props.bgColor &&
+    css`
+      background-color: ${props.bgColor};
+    `}
+
+        ${(props) =>
+    props.position &&
+    css`
+      position: ${props.position};
+    `}
 `;

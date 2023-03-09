@@ -1,17 +1,21 @@
 import React from "react";
-import { Provider as ReduxProvider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
+import { useAppSelector } from "hooks/useReduxHook";
 import { GlobalStyle, ThemeProvider } from "lib/theme";
 import { publicRouter } from "navigation/public";
-import { applicationStore } from "store/application-store";
+import { selectAuthenticated } from "store/reducers";
+
+import { LoadingOverlay } from "components/molecules";
 
 const Root = (): JSX.Element => {
+  const state = useAppSelector(selectAuthenticated);
+  const renderLoadingOverlay = state.isLoading && <LoadingOverlay />;
+
   return (
     <ThemeProvider>
-      <ReduxProvider store={applicationStore}>
-        <GlobalStyle />
-        <RouterProvider router={publicRouter} />
-      </ReduxProvider>
+      <GlobalStyle />
+      {renderLoadingOverlay}
+      <RouterProvider router={publicRouter} />
     </ThemeProvider>
   );
 };

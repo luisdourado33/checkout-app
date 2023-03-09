@@ -52,6 +52,12 @@ export const BaseText = styled.p<TextProps>`
       margin-right: ${props.mr};
     `}
 
+          ${(props) =>
+    props.mt &&
+    css`
+      margin-top: ${props.mt};
+    `}
+
     ${(props) =>
     props.w &&
     css`

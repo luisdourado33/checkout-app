@@ -9,9 +9,10 @@ import { ApiClient } from "services/singleton";
 import { type RootState } from "store/application-store";
 
 interface AuthenticatedState {
-  offers: IOffer[] | IOffer;
-  subscriptions: ISubscription[] | ISubscription;
+  offers: IOffer[];
+  subscriptions: ISubscription[];
   formFields: ICheckoutForm;
+  selectedOfferId: number | boolean;
   isFormFilled: boolean;
   isLoading: boolean;
 }
@@ -27,6 +28,7 @@ const initialState: AuthenticatedState = {
     cpf: "",
     installments: 0,
   },
+  selectedOfferId: false,
   isFormFilled: false,
   isLoading: false,
 };
@@ -48,6 +50,9 @@ export const authenticatedSlice = createSlice({
   name: "authenticated",
   initialState,
   reducers: {
+    setSelectedOfferId: (state, action: PayloadAction<number>) => {
+      state.selectedOfferId = action.payload;
+    },
     setFormFields: (state, action: PayloadAction<ICheckoutForm>) => {
       state.formFields = action.payload;
     },
@@ -65,8 +70,10 @@ export const authenticatedSlice = createSlice({
     });
     builder.addCase(
       fetchOffers.fulfilled,
-      (state, action: PayloadAction<IOffer[]>) => {
-        state.offers = action.payload;
+      (state, action: PayloadAction<IOffer[] | IOffer>) => {
+        state.offers = Array.isArray(action.payload)
+          ? action.payload
+          : [action.payload];
         state.isLoading = false;
       }
     );
@@ -76,13 +83,16 @@ export const authenticatedSlice = createSlice({
     builder.addCase(
       fetchSubscriptions.fulfilled,
       (state, action: PayloadAction<ISubscription[] | ISubscription>) => {
-        state.subscriptions = action.payload;
+        state.subscriptions = Array.isArray(action.payload)
+          ? action.payload
+          : [action.payload];
         state.isLoading = false;
       }
     );
   },
 });
 
-export const { setFormFields, toggleIsFormFilled } = authenticatedSlice.actions;
+export const { setSelectedOfferId, setFormFields, toggleIsFormFilled } =
+  authenticatedSlice.actions;
 export const selectAuthenticated = (state: RootState) => state.authenticated;
 export default authenticatedSlice.reducer;
