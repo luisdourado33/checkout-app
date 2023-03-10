@@ -1,27 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { type Location } from "react-router-dom";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "hooks/useReduxHook";
 import { arrowLeft } from "lib/icons";
+import { selectAuthenticated } from "store/reducers";
 import { useTheme } from "styled-components";
 
 import { Brand, Button, Icon } from "components/atoms";
 
 import { Header } from "./styles";
 
-interface HeaderProps {
-  currentLocation: Location;
-}
-
-export const AppHeader: React.FC<HeaderProps> = ({
-  currentLocation,
-}): JSX.Element => {
+export const AppHeader: React.FC<any> = (): JSX.Element => {
+  const state = useAppSelector(selectAuthenticated);
   const theme = useTheme();
   const navigate = useNavigate();
 
-  const [showBackButton, setShowBackButton] = useState<boolean>(false);
+  const showBackButton = state?.isFormFilled;
 
   const handleGoBack = (): void => {
-    navigate(-1);
+    navigate("/");
   };
 
   const renderBackButton = showBackButton && (
@@ -29,12 +25,6 @@ export const AppHeader: React.FC<HeaderProps> = ({
       <Icon icon={arrowLeft} />
     </Button>
   );
-
-  useEffect(() => {
-    if (currentLocation?.pathname === "/success") {
-      setShowBackButton(true);
-    }
-  });
 
   return (
     <Header
