@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-
 import { type IOffer, type ISubscription } from "@types";
 import authorizedRequest, { parseResponse } from "services/fetch";
 
@@ -9,7 +8,8 @@ export class ApiClient {
 
   private constructor() {
     this.baseUrl =
-      import.meta.env.VITE_API_BASE_URL || process.env.VITE_API_BASE_URL;
+      import.meta.env.VITE_API_BASE_URL ||
+      "https://private-0ced4-pebmeddesafiofrontend.apiary-mock.com";
   }
 
   public static getInstance(): ApiClient {
