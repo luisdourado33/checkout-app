@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { type ICheckoutForm } from "@types";
@@ -21,12 +21,15 @@ import {
 import { getInstallment } from "utils/parsers";
 import { validationSchema } from "utils/validators/validationSchema";
 
-import { Box, Button, Input, Wrapper } from "components/atoms";
+import { Box, Button, Input, Select, Wrapper } from "components/atoms";
 export const Form = styled.form``;
 
 export const PaymentForm: React.FC<any> = () => {
   const state = useAppSelector(selectAuthenticated);
   const dispatch = useAppDispatch();
+  const [maxInstallments, setMaxInstallments] = useState<number>(
+    Number(state.selectedOffer?.installments)
+  );
   const {
     register,
     handleSubmit,
@@ -41,6 +44,10 @@ export const PaymentForm: React.FC<any> = () => {
     dispatch(setFormFields(data));
     dispatch(toggleIsFormFilled());
   };
+
+  useEffect(() => {
+    setMaxInstallments(Number(state.selectedOffer?.installments));
+  }, [state.selectedOffer]);
 
   return (
     <Box w="100%">
@@ -97,6 +104,9 @@ export const PaymentForm: React.FC<any> = () => {
           type="text"
           style={{ marginBottom: "30px" }}
           register={register("printedName")}
+          onChange={(e: any) => {
+            setValue("printedName", String(e.target.value).toUpperCase());
+          }}
           error={errors.printedName}
         />
         <Input
@@ -120,14 +130,15 @@ export const PaymentForm: React.FC<any> = () => {
           register={register("coupomCode")}
           error={errors.coupomCode}
         />
-        <Input
+        <Select
           w="100%"
           label="Número de parcelas"
           placeholder="Selecionar"
-          type="number"
           style={{ marginBottom: "30px" }}
           register={register("installments")}
+          options={maxInstallments}
           onChange={(e: any) => {
+            console.log(e.target.value);
             setValue("installments", getInstallment(Number(e.target.value)));
           }}
           error={errors.installments}
@@ -135,7 +146,7 @@ export const PaymentForm: React.FC<any> = () => {
         <Button
           w="100%"
           variant="solid"
-          disabled={state.isLoading}
+          disabled={state.isLoading || !state.selectedOffer}
           type="submit"
         >
           Finalizar pagamento

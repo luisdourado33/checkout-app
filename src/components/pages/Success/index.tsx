@@ -49,7 +49,10 @@ export const Success: React.FC<any> = () => {
         </Text>
 
         <Card mb="88px">
-          <BadgePlan offer={state?.selectedOffer} />
+          <BadgePlan
+            offer={state?.selectedOffer}
+            formFields={state?.formFields}
+          />
           <Box
             d="flex"
             justifyContent="space-between"
@@ -73,8 +76,8 @@ export const Success: React.FC<any> = () => {
           </Box>
         </Card>
 
-        <Button w="fit-content" mb="24px" variant="text">
-          <Text fontWeight="bold">Gerenciar assinaturas</Text>
+        <Button w="fit-content" mb="24px" variant="text" disabled>
+          <Text fontWeight="bold">Gerenciar assinaturas (indisponível)</Text>
         </Button>
 
         <Button

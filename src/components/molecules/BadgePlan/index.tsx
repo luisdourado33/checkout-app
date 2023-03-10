@@ -1,5 +1,5 @@
 import React from "react";
-import { type IOffer } from "@types";
+import type { ICheckoutForm, IOffer } from "@types";
 import { circleStar } from "lib/icons";
 import { useTheme } from "styled-components";
 import { getCurrencyFormat } from "utils/masks";
@@ -9,6 +9,7 @@ import { Box, Icon, Text, Wrapper } from "components/atoms";
 
 interface Props {
   offer?: IOffer;
+  formFields?: ICheckoutForm;
 }
 
 export const BadgePlan: React.FC<Props> = (props) => {
@@ -23,12 +24,13 @@ export const BadgePlan: React.FC<Props> = (props) => {
         props?.offer?.discountAmmount ?? 0
       )
     : props?.offer?.fullPrice;
+
+  const currentInstallments: number = Number(
+    props?.formFields?.installments ?? 1
+  );
   const monthlyInstallment: number =
-    (typeof finalPrice !== "undefined" ? finalPrice : 1) /
-    (typeof props?.offer?.installments !== "undefined" &&
-    props?.offer?.installments > 0
-      ? props?.offer?.installments
-      : 1);
+    (finalPrice ?? 1) /
+    (currentInstallments !== undefined ? currentInstallments : 1);
 
   return (
     <Box
@@ -57,7 +59,7 @@ export const BadgePlan: React.FC<Props> = (props) => {
           color={theme.colors.main.primary}
         >
           {getCurrencyFormat(finalPrice ?? 0)} |{" "}
-          {props?.offer?.installments ?? 1}x{" "}
+          {props?.formFields?.installments ?? 1}x{" "}
           {getCurrencyFormat(monthlyInstallment)}
         </Text>
       </Wrapper>
