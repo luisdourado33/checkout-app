@@ -7,7 +7,9 @@
 </p>
 
 <p align="center"><a href="https://pkg.go.dev/github.com/create-go-app/cli/v3?tab=doc" 
-target="_blank"><img src="https://img.shields.io/badge/Vite-%5E4.1.0-00ADD1?style=for-the-badge&logo=vite" alt="vite version" /></a>&nbsp;<a href="https://vitejs.dev/guide/" target="_blank"><img src="https://img.shields.io/badge/Jest_Cover-73.0%25-success?style=for-the-badge&logo=none" alt="jest cover" /></a>&nbsp;<a href="https://goreportcard.com/report/github.com/create-go-app/cli" target="_blank"></a>&nbsp;</p>
+target="_blank"><img src="https://img.shields.io/badge/Vite-%5E4.1.0-00ADD1?style=for-the-badge&logo=vite" alt="vite version" /></a>&nbsp;<a href="https://reactjs.org/docs/getting-started.html" 
+target="_blank"><img src="https://img.shields.io/badge/React-%5E18.2.0-00ADD1?style=for-the-badge&logo=react" alt="react version" /></a>&nbsp;<a href="https://reactjs.org/docs/getting-started.html" 
+target="_blank"><img src="https://img.shields.io/badge/NPM-%5E6.14.18-00ADD1?style=for-the-badge&logo=npm" alt="npm version" /></a>&nbsp;<a href="https://vitejs.dev/guide/" target="_blank"><img src="https://img.shields.io/badge/Jest_Cover-73.0%25-success?style=for-the-badge&logo=none" alt="jest cover" /></a>&nbsp;<a href="https://goreportcard.com/report/github.com/create-go-app/cli" target="_blank"></a>&nbsp;</p>
 
 ## Autor
 - [GitHub](https://github.com/luisdourado33)
