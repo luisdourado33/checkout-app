@@ -8,9 +8,9 @@ interface InputBaseProps {
   style?: CSSProperties;
   helperText?: string;
   error?: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export type InputProps = BaseComponentProps &
   InputBaseProps &
-  InputHTMLAttributes<HTMLInputElement>;
+  InputHTMLAttributes<HTMLSelectElement>;

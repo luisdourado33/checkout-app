@@ -17,6 +17,13 @@ export const BaseButton = styled.button<ButtonProps>`
       border: unset;
     `}
 
+  ${({ theme, disabled }) =>
+    disabled &&
+    css`
+      background-color: ${theme.colors.common.lightGray};
+      color: ${theme.colors.main.primary};
+    `}
+
   ${({ variant, theme }) =>
     variant === "outline" &&
     css`

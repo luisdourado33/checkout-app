@@ -1,11 +1,37 @@
 import React from "react";
+import type { ICheckoutForm, IOffer } from "@types";
 import { circleStar } from "lib/icons";
 import { useTheme } from "styled-components";
+import { getCurrencyFormat } from "utils/masks";
+import { getDiscountedValue, getPeriodLabel } from "utils/parsers";
 
 import { Box, Icon, Text, Wrapper } from "components/atoms";
 
-export const BadgePlan: React.FC<any> = () => {
+interface Props {
+  offer?: IOffer;
+  formFields?: ICheckoutForm;
+}
+
+export const BadgePlan: React.FC<Props> = (props) => {
   const theme = useTheme();
+
+  const hasDiscount =
+    props?.offer?.discountPercentage != null &&
+    props?.offer?.discountPercentage > 0;
+  const finalPrice = hasDiscount
+    ? getDiscountedValue(
+        props?.offer?.fullPrice ?? 0,
+        props?.offer?.discountAmmount ?? 0
+      )
+    : props?.offer?.fullPrice;
+
+  const currentInstallments: number = Number(
+    props?.formFields?.installments ?? 1
+  );
+  const monthlyInstallment: number =
+    (finalPrice ?? 1) /
+    (currentInstallments !== undefined ? currentInstallments : 1);
+
   return (
     <Box
       d="flex"
@@ -24,14 +50,17 @@ export const BadgePlan: React.FC<any> = () => {
           mb="8px"
           color={theme.colors.main.primary}
         >
-          Anual | Parcelado
+          {getPeriodLabel(props?.offer?.period ?? "")} |{" "}
+          {props?.offer?.description ?? ""}
         </Text>
         <Text
           fontSize="14px"
           fontWeight="400"
           color={theme.colors.main.primary}
         >
-          R$ 479,90 | 10x R$ 47,99
+          {getCurrencyFormat(finalPrice ?? 0)} |{" "}
+          {props?.formFields?.installments ?? 1}x{" "}
+          {getCurrencyFormat(monthlyInstallment)}
         </Text>
       </Wrapper>
     </Box>

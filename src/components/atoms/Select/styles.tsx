@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 import { Text } from "../Text";
 
-import { BaseInput } from "./base-input";
+import { BaseSelect } from "./base-select";
 
 export const Label = styled.label`
   font-size: 12px;
   color: ${({ theme }) => theme.colors.common.heavyGray};
 `;
-export const InputComponent = styled(BaseInput)`
+export const SelectComponent = styled(BaseSelect)`
   width: 100%;
   padding: 10px 0;
   border-top: none;

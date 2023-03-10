@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React from "react";
 import { type IOffer } from "@types";
-import { setSelectedOfferId } from "store/reducers";
+import { setSelectedOffer, setSelectedOfferId } from "store/reducers";
 
 import { Box } from "components/atoms";
 import { InfoPlan } from "components/molecules";
@@ -17,8 +18,8 @@ export const PlanList: React.FC<Props> = ({
   selectedOfferId,
 }): any => {
   const handleChangeSelected = (id: number): any => {
-    console.log("dispatching...");
     dispatch(setSelectedOfferId(id));
+    dispatch(setSelectedOffer(list.find((offer) => offer.id === id)!));
   };
 
   const renderItems = list?.map((item: IOffer, index: number) => (

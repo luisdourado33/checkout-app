@@ -1,20 +1,23 @@
+/* eslint-disable react/display-name */
 import React from "react";
 
 import { Wrapper } from "../Wrapper";
 
-import { type InputProps } from "./input.types";
-import { InputComponent, Label } from "./styles";
+import { HelperText, InputComponent, Label } from "./styles";
 
-export const Input = (props: InputProps): JSX.Element => {
+export const Input = React.forwardRef((props: any, ref: any) => {
   return (
     <Wrapper d="flex" flexDirection="column" style={props.style ?? {}}>
       <Label htmlFor={props.id}>{props.label}</Label>
       <InputComponent
-        id={props.id}
+        {...props.register}
+        onChange={props.onChange}
         placeholder={props.placeholder}
         type={props.type}
-        value={props.value}
       />
+      <HelperText error={props.error?.message} fontSize="13px" mt="2px">
+        {props.error?.message}
+      </HelperText>
     </Wrapper>
   );
-};
+});

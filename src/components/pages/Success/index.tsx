@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { useAppSelector } from "hooks/useReduxHook";
+import { useAppDispatch, useAppSelector } from "hooks/useReduxHook";
 import { circleCheck } from "lib/icons";
-import { selectAuthenticated } from "store/reducers";
+import { selectAuthenticated, toggleIsFormFilled } from "store/reducers";
 import { useTheme } from "styled-components";
 
 import { Box, Button, Card, Container, Icon, Text } from "components/atoms";
@@ -10,7 +10,8 @@ import { BadgePlan } from "components/molecules";
 import { Content } from "./styles";
 
 export const Success: React.FC<any> = () => {
-  const state = useAppSelector(selectAuthenticated);
+  const state: any = useAppSelector(selectAuthenticated);
+  const dispatch = useAppDispatch();
   const theme = useTheme();
 
   useEffect(() => {
@@ -48,7 +49,10 @@ export const Success: React.FC<any> = () => {
         </Text>
 
         <Card mb="88px">
-          <BadgePlan />
+          <BadgePlan
+            offer={state?.selectedOffer}
+            formFields={state?.formFields}
+          />
           <Box
             d="flex"
             justifyContent="space-between"
@@ -68,15 +72,21 @@ export const Success: React.FC<any> = () => {
             pt="19px"
           >
             <Text color={theme.colors.common.mediumGray}>CPF</Text>
-            <Text color="#151516">000.000.000-00</Text>
+            <Text color="#151516">{state?.formFields?.cpf}</Text>
           </Box>
         </Card>
 
-        <Button w="fit-content" mb="24px" variant="text">
-          <Text fontWeight="bold">Gerenciar assinaturas</Text>
+        <Button w="fit-content" mb="24px" variant="text" disabled>
+          <Text fontWeight="bold">Gerenciar assinaturas (indisponível)</Text>
         </Button>
 
-        <Button variant="solid" mb="48px">
+        <Button
+          variant="solid"
+          mb="48px"
+          onClick={() => {
+            dispatch(toggleIsFormFilled());
+          }}
+        >
           IR PARA HOME
         </Button>
       </Content>
