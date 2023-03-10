@@ -13,6 +13,7 @@ interface AuthenticatedState {
   subscriptions: ISubscription[];
   formFields: ICheckoutForm;
   selectedOfferId: number | boolean;
+  selectedOffer?: IOffer;
   isFormFilled: boolean;
   isLoading: boolean;
 }
@@ -50,11 +51,16 @@ export const authenticatedSlice = createSlice({
   name: "authenticated",
   initialState,
   reducers: {
+    setSelectedOffer: (state, action: PayloadAction<IOffer>) => {
+      state.selectedOffer = action.payload;
+    },
     setSelectedOfferId: (state, action: PayloadAction<number>) => {
       state.selectedOfferId = action.payload;
     },
     setFormFields: (state, action: PayloadAction<ICheckoutForm>) => {
+      state.isLoading = true;
       state.formFields = action.payload;
+      state.isLoading = false;
     },
     toggleIsFormFilled: (state) => {
       state.isFormFilled = !state.isFormFilled;
@@ -92,7 +98,11 @@ export const authenticatedSlice = createSlice({
   },
 });
 
-export const { setSelectedOfferId, setFormFields, toggleIsFormFilled } =
-  authenticatedSlice.actions;
+export const {
+  setSelectedOffer,
+  setSelectedOfferId,
+  setFormFields,
+  toggleIsFormFilled,
+} = authenticatedSlice.actions;
 export const selectAuthenticated = (state: RootState) => state.authenticated;
 export default authenticatedSlice.reducer;

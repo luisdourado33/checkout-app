@@ -13,7 +13,7 @@ describe("Test suite for formatCreditCardNumber function", () => {
     sut = {
       correctCreditCard: "5481415732061202",
       incorrectCreditCard: "548141573206",
-      expectedValue: "5481-4157-3206-1202",
+      expectedValue: "5481 4157 3206 1202",
     };
   });
 

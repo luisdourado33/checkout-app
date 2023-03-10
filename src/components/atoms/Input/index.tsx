@@ -11,6 +11,7 @@ export const Input = React.forwardRef((props: any, ref: any) => {
       <Label htmlFor={props.id}>{props.label}</Label>
       <InputComponent
         {...props.register}
+        onChange={props.onChange}
         placeholder={props.placeholder}
         type={props.type}
       />

@@ -5,9 +5,20 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { type ICheckoutForm } from "@types";
-import { useAppSelector } from "hooks/useReduxHook";
-import { selectAuthenticated, setFormFields } from "store/reducers";
+import { useAppDispatch, useAppSelector } from "hooks/useReduxHook";
+import {
+  selectAuthenticated,
+  setFormFields,
+  toggleIsFormFilled,
+} from "store/reducers";
 import styled from "styled-components";
+import {
+  formatCPF,
+  formatCreditCardNumber,
+  formatCVV,
+  validityDateMask,
+} from "utils/masks";
+import { getInstallment } from "utils/parsers";
 import { validationSchema } from "utils/validators/validationSchema";
 
 import { Box, Button, Input, Wrapper } from "components/atoms";
@@ -15,27 +26,20 @@ export const Form = styled.form``;
 
 export const PaymentForm: React.FC<any> = () => {
   const state = useAppSelector(selectAuthenticated);
+  const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
-    reset,
+    setValue,
     formState: { errors },
   } = useForm<ICheckoutForm>({
     resolver: yupResolver(validationSchema),
   });
 
-  const [formValues, setFormValues] = useState<ICheckoutForm & any>({
-    creditCardNumber: "",
-    cvv: "",
-    printedName: "",
-    cpf: "",
-    installments: 0,
-    validityDate: "",
-    coupomCode: "",
-  });
-
   const handleSubmitForm = async (data: ICheckoutForm): Promise<void> => {
-    console.log(JSON.stringify(data));
+    console.log(data);
+    dispatch(setFormFields(data));
+    dispatch(toggleIsFormFilled());
   };
 
   return (
@@ -47,6 +51,12 @@ export const PaymentForm: React.FC<any> = () => {
           placeholder="0000 0000 0000 0000"
           type="text"
           style={{ marginBottom: "30px" }}
+          onChange={(e: any) => {
+            setValue(
+              "creditCardNumber",
+              formatCreditCardNumber(e.target.value)
+            );
+          }}
           register={register("creditCardNumber")}
           error={errors.creditCardNumber}
         />
@@ -60,6 +70,9 @@ export const PaymentForm: React.FC<any> = () => {
               width: "100%",
             }}
             register={register("validityDate")}
+            onChange={(e: any) => {
+              setValue("validityDate", validityDateMask(e.target.value));
+            }}
             error={errors.validityDate}
           />
 
@@ -71,6 +84,9 @@ export const PaymentForm: React.FC<any> = () => {
               width: "100%",
             }}
             register={register("cvv")}
+            onChange={(e: any) => {
+              setValue("cvv", formatCVV(e.target.value));
+            }}
             error={errors.cvv}
           />
         </Wrapper>
@@ -90,6 +106,9 @@ export const PaymentForm: React.FC<any> = () => {
           type="text"
           style={{ marginBottom: "30px" }}
           register={register("cpf")}
+          onChange={(e: any) => {
+            setValue("cpf", formatCPF(e.target.value));
+          }}
           error={errors.cpf}
         />
         <Input
@@ -108,6 +127,9 @@ export const PaymentForm: React.FC<any> = () => {
           type="number"
           style={{ marginBottom: "30px" }}
           register={register("installments")}
+          onChange={(e: any) => {
+            setValue("installments", getInstallment(Number(e.target.value)));
+          }}
           error={errors.installments}
         />
         <Button
