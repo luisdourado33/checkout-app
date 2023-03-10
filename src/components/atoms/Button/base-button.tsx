@@ -81,4 +81,10 @@ export const BaseButton = styled.button<ButtonProps>`
     css`
       flex: ${props.flex};
     `}
+
+    ${(props) =>
+    props.textTransform &&
+    css`
+      text-transform: ${props.textTransform};
+    `}
 `;

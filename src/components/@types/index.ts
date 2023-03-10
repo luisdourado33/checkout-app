@@ -52,6 +52,7 @@ export interface BaseComponentProps {
 
   flex?: string;
   cursor?: string;
+  textTransform?: string;
 }
 
 export interface BaseTextProps {

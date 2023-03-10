@@ -83,11 +83,12 @@ export const Success: React.FC<any> = () => {
         <Button
           variant="solid"
           mb="48px"
+          textTransform="uppercase"
           onClick={() => {
             dispatch(toggleIsFormFilled());
           }}
         >
-          IR PARA HOME
+          Ir para home
         </Button>
       </Content>
     </Container>
